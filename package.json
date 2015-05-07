@@ -1,0 +1,20 @@
+{
+  "name": "react-addons-backend",
+  "version": "1.0.0",
+  "description": "React addon search backend",
+  "main": "app.js",
+  "dependencies": {
+    "npm": "^2.9.0"
+  },
+  "devDependencies": {
+    "restify": "^3.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "zzarcon",
+  "license": "ISC"
+}
