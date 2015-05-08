@@ -6,6 +6,7 @@ var server = restify.createServer({
   version: '1.0.0'
 });
 var PORT = 8080;
+var cache = null;
 
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
@@ -14,10 +15,14 @@ server.use(restify.CORS());
 server.use(restify.fullResponse());
 
 server.get('/packages', function (req, res, next) {
-  // var url = req.params.url;
   npm.load({
     dev: true
   }, function() {
+    if (cache) {
+      res.send({packages: cache});
+      return;
+    }
+
     npm.commands.search(searchTerms, true, function(_, response) {      
       var addons = [];
 
@@ -25,9 +30,8 @@ server.get('/packages', function (req, res, next) {
         addons.push(response[prop]);
       }
 
-      res.send({
-        addons: addons
-      });
+      cache = addons;
+      res.send({packages: addons});
     });
   });
 });
