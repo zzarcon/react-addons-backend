@@ -34,6 +34,10 @@ server.get('/packages', function (req, res, next) {
   });
 });
 
+server.get('/test', function (req, res, next) {
+  res.send({test: "This is a test response"});
+});
+
 server.listen(PORT, function () {
   console.log('%s listening at %s', server.name, server.url);
 });
