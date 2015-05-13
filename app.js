@@ -1,6 +1,6 @@
 var restify = require('restify');
 var npm = require("npm");
-var searchTerms = ["react"];
+var searchTerms = ["react-component"];
 var server = restify.createServer({
   name: 'react-addons',
   version: '1.0.0'
