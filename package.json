@@ -4,12 +4,11 @@
   "description": "React addon search backend",
   "main": "app.js",
   "dependencies": {
-    "npm": "^2.9.0"
-  },
-  "devDependencies": {
+    "npm": "^2.9.0",
     "restify": "^3.0.2"
   },
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

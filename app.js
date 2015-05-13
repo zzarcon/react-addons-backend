@@ -15,14 +15,12 @@ server.use(restify.CORS());
 server.use(restify.fullResponse());
 
 server.get('/packages', function (req, res, next) {
-  npm.load({
-    dev: true
-  }, function() {
-    if (cache) {
-      res.send({packages: cache});
-      return;
-    }
+  if (cache) {
+    res.send({packages: cache});
+    return;
+  }
 
+  npm.load({dev: true}, function() {
     npm.commands.search(searchTerms, true, function(_, response) {
       var addons = [];
 
