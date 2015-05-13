@@ -2,10 +2,10 @@ var restify = require('restify');
 var npm = require("npm");
 var searchTerms = ["react"];
 var server = restify.createServer({
-  name: 'myapp',
+  name: 'react-addons',
   version: '1.0.0'
 });
-var PORT = 8080;
+var PORT = process.env.PORT || 8080;
 var cache = null;
 
 server.use(restify.acceptParser(server.acceptable));
@@ -23,7 +23,7 @@ server.get('/packages', function (req, res, next) {
       return;
     }
 
-    npm.commands.search(searchTerms, true, function(_, response) {      
+    npm.commands.search(searchTerms, true, function(_, response) {
       var addons = [];
 
       for (var prop in response) {
